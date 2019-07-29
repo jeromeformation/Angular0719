@@ -3,9 +3,12 @@
 
 <p [attr.contenteditable]="isAdmin">Editez-moi !</p>
 
-<p [class.teal-text]="isAdmin" >Ce texte est en bleu-vert</p>
+<p [class.teal-text]="isAdmin" [class.blue-bg]="isAdmin">Ce texte est en bleu-vert</p>
 
 <p [class]="(isAdmin) ? 'teal-text' : 'blue-bg'" >Ce texte est en bleu-vert</p>
+
+<button mat-button class="blue-bg" (click)="isAdmin = !isAdmin">Switch admin</button>
+<button mat-button class="blue-bg" (click)="changeAdmin()">Switch admin</button>
 
 <ul>
   <li>Puce 1</li>

@@ -44,4 +44,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit() {
   }
 
+  private changeAdmin() {
+    this.isAdmin = !this.isAdmin;
+  }
 }
