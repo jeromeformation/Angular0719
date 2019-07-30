@@ -8,7 +8,7 @@ import {CONST_PRODUCTS, Product} from '../model/product';
 })
 export class ProductListComponent implements OnInit {
 
-  private PRODUCTS: Array<Product> = CONST_PRODUCTS;
+  private products: Array<Product> = CONST_PRODUCTS;
 
   /**
    * Définition d'une propriété URL

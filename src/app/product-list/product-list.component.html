@@ -12,15 +12,31 @@
 
 <p [ngClass]="classesCss">Utilisation de ngClass</p>
 
-<ul>
-  <li>Puce 1</li>
-  <li>Puce 2</li>
-  <li>Puce 3</li>
-  <li>Puce 4</li>
-  <li>Puce 5</li>
-  <li>Puce 6</li>
-  <li>Puce 7</li>
-  <li>Puce 8</li>
-  <li>Puce 9</li>
-  <li>Puce 10</li>
-</ul>
+<p *ngIf="isAdmin; else publicContent">Contenu confidentiel</p>
+
+<ng-template #publicContent>
+  <p>Contenu public</p>
+</ng-template>
+
+
+<mat-radio-group
+  aria-labelledby="example-radio-group-label"
+  class="example-radio-group">
+  <mat-radio-button
+    *ngFor="let product of products"
+    [value]="product.name"
+    class="example-radio-button">
+    {{ product.name }}
+  </mat-radio-button>
+</mat-radio-group>
+
+
+
+
+
+
+
+
+
+
+
