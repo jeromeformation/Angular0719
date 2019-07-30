@@ -26,6 +26,11 @@ export class ProductListComponent implements OnInit {
   public classesCss: object;
 
   /**
+   * Le produit sélectionné
+   */
+  public choosenProduct: Product;
+
+  /**
    * Initialisation des propriétés
    */
   constructor() {

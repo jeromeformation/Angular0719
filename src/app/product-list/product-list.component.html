@@ -25,18 +25,12 @@
   <mat-radio-button
     *ngFor="let product of products"
     [value]="product.name"
-    class="example-radio-button">
+    class="example-radio-button"
+    (change)="choosenProduct = product"
+  >
     {{ product.name }}
   </mat-radio-button>
 </mat-radio-group>
 
-
-
-
-
-
-
-
-
-
+<app-product-show [product]="choosenProduct"></app-product-show>
 

@@ -23,13 +23,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
+import { ProductShowComponent } from './product-show/product-show.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
     NavbarComponent,
-    ProductCreateComponent
+    ProductCreateComponent,
+    ProductShowComponent
   ],
   imports: [
     BrowserModule,
