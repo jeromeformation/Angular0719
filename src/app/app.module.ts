@@ -13,12 +13,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import {MatCardModule} from '@angular/material';
+import { ProductCreateComponent } from './product-create/product-create.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProductCreateComponent
   ],
   imports: [
     BrowserModule,
