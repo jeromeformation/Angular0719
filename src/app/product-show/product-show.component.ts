@@ -22,12 +22,12 @@ export class ProductShowComponent implements OnInit {
     this.voted = new EventEmitter<number>();
   }
 
-  ngOnInit() {
-  }
-
   public handleVote(note: number) {
     console.log('[show] Nouveau vote : ' + note);
     // Emission de l'événement "voted"
     this.voted.emit(note);
+  }
+
+  ngOnInit() {
   }
 }

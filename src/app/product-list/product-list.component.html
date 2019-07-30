@@ -23,12 +23,12 @@
   aria-labelledby="example-radio-group-label"
   class="example-radio-group">
   <mat-radio-button
-    *ngFor="let product of products"
+    *ngFor="let product of products; index as i"
     [value]="product.name"
     class="example-radio-button"
     (change)="choosenProduct = product"
   >
-    {{ product.name }}
+    {{ product.name }} ({{getAverage(i)}})
   </mat-radio-button>
 </mat-radio-group>
 
