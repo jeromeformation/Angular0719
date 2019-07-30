@@ -13,6 +13,12 @@ describe('workspace-project App', () => {
     expect(page.getTitleText()).toEqual('Titre de la page');
   });
 
+  it('should be NavbarComponent appear', () => {
+    page.navigateTo();
+    expect(page.getComponent('app-navbar')).not.toBeNull();
+  });
+
+
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser
     const logs = await browser.manage().logs().get(logging.Type.BROWSER);

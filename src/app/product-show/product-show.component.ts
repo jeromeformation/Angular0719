@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Product} from '../model/product';
 
 @Component({
@@ -13,9 +13,21 @@ export class ProductShowComponent implements OnInit {
    */
   @Input() product: Product;
 
-  constructor() { }
+  /**
+   * Evénement de vote à diffuser au parent
+   */
+  @Output() voted: EventEmitter<number>;
+
+  constructor() {
+    this.voted = new EventEmitter<number>();
+  }
 
   ngOnInit() {
   }
 
+  public handleVote(note: number) {
+    console.log('[show] Nouveau vote : ' + note);
+    // Emission de l'événement "voted"
+    this.voted.emit(note);
+  }
 }

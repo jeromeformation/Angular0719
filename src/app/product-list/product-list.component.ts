@@ -53,4 +53,8 @@ export class ProductListComponent implements OnInit {
     this.isAdmin = !this.isAdmin;
     this.changeCssClasses();
   }
+
+  public handleVote(note: number) {
+    console.log('[list] Nouveau vote : ' + note);
+  }
 }

@@ -32,5 +32,8 @@
   </mat-radio-button>
 </mat-radio-group>
 
-<app-product-show [product]="choosenProduct"></app-product-show>
+<app-product-show
+  [product]="choosenProduct"
+  (voted)="handleVote($event)"
+></app-product-show>
 

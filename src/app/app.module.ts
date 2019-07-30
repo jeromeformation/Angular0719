@@ -22,8 +22,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 import { ProductShowComponent } from './product-show/product-show.component';
+import {MatSliderModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ProductShowComponent } from './product-show/product-show.component';
     MatCardModule,
     MatInputModule,
     FormsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

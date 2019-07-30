@@ -22,4 +22,8 @@ describe('ProductShowComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('product begin null', () => {
+    expect(component.product).toBeNull();
+  })
 });
