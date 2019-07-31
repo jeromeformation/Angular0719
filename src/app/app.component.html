@@ -24,6 +24,13 @@
         <a mat-list-item routerLink="/">Page d'accueil</a>
         <a mat-list-item routerLink="/produits">Les produits</a>
         <a mat-list-item routerLink="/produits/creation">Créer un nouveau produit</a>
+
+        <button mat-button [matMenuTriggerFor]="menu">Détail des produits</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="/produits/1">Hamac</button>
+          <button mat-menu-item routerLink="/produits/2">Parasol</button>
+        </mat-menu>
+
       </mat-nav-list>
     </mat-toolbar>
 

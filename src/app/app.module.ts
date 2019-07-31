@@ -15,6 +15,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 // Les modules
 import { AppRoutingModule } from './app-routing.module';
 import {SharedModule} from './shared.module';
+import { ProductViewShowComponent } from './product-view-show/product-view-show.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {SharedModule} from './shared.module';
     ProductCreateComponent,
     ProductShowComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ProductViewShowComponent
   ],
   imports: [
     BrowserModule,
