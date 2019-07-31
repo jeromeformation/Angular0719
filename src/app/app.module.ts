@@ -6,9 +6,10 @@ import {FormsModule} from '@angular/forms';
 
 // Les components
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
 import { ProductListComponent } from './product-list/product-list.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
+import { ProductShowComponent } from './product-show/product-show.component';
 
 // Les modules
 import { AppRoutingModule } from './app-routing.module';
@@ -23,16 +24,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
-import { ProductShowComponent } from './product-show/product-show.component';
-import {MatSliderModule} from '@angular/material';
+import { MatSliderModule } from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
-    NavbarComponent,
     ProductCreateComponent,
-    ProductShowComponent
+    ProductShowComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
