@@ -1,6 +1,7 @@
 import {Component, DoCheck, OnInit} from '@angular/core';
-import {CONST_PRODUCTS, Product} from '../model/product';
+import {Product} from '../model/product';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ProductService} from '../product.service';
 
 @Component({
   selector: 'app-product-view-show',
@@ -14,7 +15,7 @@ export class ProductViewShowComponent implements OnInit, DoCheck {
    */
   public product: Product;
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router, private productService: ProductService) {
   }
 
   /**
@@ -30,12 +31,15 @@ export class ProductViewShowComponent implements OnInit, DoCheck {
   private getProduct(): void {
     // On récupère l'id de la route
     const id: number = +this.route.snapshot.paramMap.get('id');
-    // On filtre notre tableau local pour trouver le produit correspond à l'id
-    this.product = CONST_PRODUCTS.find(elem => elem.id === id);
-    // On redirige vers la page 404 si le produit n'a pas été trouvé
-    if (!this.product) {
-      this.router.navigate(['/not-found']);
-    }
+    // On récupère le produit grâce au service
+    this.productService.getProductById(id).subscribe(product => {
+      // On stocke le produit pour l'affichage
+      this.product = product;
+      // On redirige vers la page 404 si le produit n'a pas été trouvé
+      if (!this.product) {
+        this.router.navigate(['/not-found']);
+      }
+    });
   }
 
   /**
@@ -44,8 +48,10 @@ export class ProductViewShowComponent implements OnInit, DoCheck {
    */
   public ngDoCheck(): void {
     const id: number = +this.route.snapshot.paramMap.get('id');
-    if (id !== this.product.id) {
-      this.getProduct();
+    if (this.product) {
+      if (id !== +this.product.id) {
+        this.getProduct();
+      }
     }
   }
 

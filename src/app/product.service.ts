@@ -28,6 +28,18 @@ export class ProductService {
       )
     ;
   }
+  /**
+   * Récupère l'éventuel produit par rapport à l'id envoyé
+   */
+  public getProductById(id: number): Observable<Product> {
+    return this.http
+      .get<Product>(this.apiURL + '/' + id)
+      .pipe(
+        tap(product => console.log('Produit reçu : ' + product.name)),
+        catchError(this.handleError)
+      )
+    ;
+  }
 
   /**
    * Gère les erreurs liées à la communication entre l'API et Angular (HttpClient)
