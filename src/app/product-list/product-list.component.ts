@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {CONST_PRODUCTS, Product} from '../model/product';
+import {Product} from '../model/product';
+import {ProductService} from '../product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -8,7 +9,7 @@ import {CONST_PRODUCTS, Product} from '../model/product';
 })
 export class ProductListComponent implements OnInit {
 
-  private products: Array<Product> = CONST_PRODUCTS;
+  private products: Array<Product> = [];
 
   /**
    * Définition d'une propriété URL
@@ -38,22 +39,30 @@ export class ProductListComponent implements OnInit {
   /**
    * Initialisation des propriétés
    */
-  constructor() {
+  constructor(private productService: ProductService) {
     this.url = 'https://www.ecosia.org';
     this.isAdmin = true;
     this.changeCssClasses();
+  }
 
-    // On initialise le tableau des notes
-    this.averages = [];
-    // 1. On créé autant d'index qu'il y a de produits
-    // 2. Dans chaque index on aura :
-    //  - La somme des notes (par défaut 0)
-    //  - Le nombre de votes (par défaut 0)
-    this.products.forEach(elem => this.averages.push([0, 0]));
+  /**
+   * On récupère les produits grâce à l'Observable du service des produits
+   */
+  ngOnInit() {
+    this.productService.getProducts().subscribe(
+      products => {
+        this.products = products;
 
-    console.log(this.averages);
-
-    // equivalent à : this.averages = this.products.map(() => [0, 0]);
+        // On initialise le tableau des notes
+        this.averages = [];
+        // 1. On créé autant d'index qu'il y a de produits
+        // 2. Dans chaque index on aura :
+        //  - La somme des notes (par défaut 0)
+        //  - Le nombre de votes (par défaut 0)
+        this.products.forEach(elem => this.averages.push([0, 0]));
+        // equivalent à : this.averages = this.products.map(() => [0, 0]);
+      }
+    );
   }
 
   private changeCssClasses() {
@@ -61,9 +70,6 @@ export class ProductListComponent implements OnInit {
       'blue-bg': this.isAdmin,
       'teal-text': !this.isAdmin
     };
-  }
-
-  ngOnInit() {
   }
 
   public changeAdmin() {

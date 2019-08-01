@@ -14,25 +14,27 @@ export class Product {
   public imageName: string;
 
   constructor(name?: string, description?: string, id?: number) {
-    this._name = name;
+    this.name = name;
     this.description = description;
     this.id = id;
   }
 
-  get name(): string {
+  public get name() {
     return this._name;
   }
 
-  set name(value: string) {
-    this._name = value;
-    this.slug = slug(value);
+  public set name(value: string) {
+    if (value) {
+      this._name = value;
+      this.slug = slug(this._name, {lower: true});
+    }
   }
 }
 
 /**
  * Données de tests (à remplacer par l'appel de l'API ASAP)
  */
-export const CONST_PRODUCTS = [
+export const CONST_PRODUCTS: Product[] = [
   new Product('Hamac', 'Pour se reposer', 1),
   new Product('Parasol', 'Pour se mettre à l\'ombre', 2),
   new Product('Ballon', 'Pour jouer au volley', 3)
