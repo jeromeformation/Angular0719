@@ -6,7 +6,7 @@ export class Product {
   private _name: string;
   public slug: string;
   public description: string;
-  public price: number;
+  private _price: number;
   public createdAt: Date;
   public updatedAt: Date;
   public nbViews: number;
@@ -32,6 +32,15 @@ export class Product {
       this._name = value;
       this.slug = slug(this._name, {lower: true});
     }
+  }
+
+
+  get price(): number {
+    return this._price;
+  }
+
+  set price(value: number) {
+    this._price = (value >= 0) ? value : 0;
   }
 }
 
