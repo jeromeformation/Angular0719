@@ -17,6 +17,10 @@ export class Product {
     this.name = name;
     this.description = description;
     this.id = id;
+
+    // Valeurs par défaut
+    this.nbViews = 0;
+    this.isPublished = true;
   }
 
   public get name() {

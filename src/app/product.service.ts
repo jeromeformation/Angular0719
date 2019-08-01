@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from './model/product';
-import { Observable, throwError } from 'rxjs';
+import {Observable, of, throwError} from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 
@@ -31,12 +31,22 @@ export class ProductService {
   /**
    * Récupère l'éventuel produit par rapport à l'id envoyé
    */
-  public getProductById(id: number): Observable<Product> {
+  public getProductById(id: number): Observable<Product|null> {
     return this.http
       .get<Product>(this.apiURL + '/' + id)
       .pipe(
         tap(product => console.log('Produit reçu : ' + product.name)),
-        catchError(this.handleError)
+        catchError(
+    (error: HttpErrorResponse) => {
+              if (error.status === 404) {
+                // Si c'est une 404 => le produit n'a été trouvé
+                return of(null);
+              } else {
+                // Sinon, on gère l'erreur comme d'habitude
+                this.handleError(error);
+            }
+          }
+        )
       )
     ;
   }

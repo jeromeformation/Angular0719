@@ -9,6 +9,19 @@
       <textarea [(ngModel)]="product.description" name="description" matInput placeholder="Description"></textarea>
     </mat-form-field>
 
+    <mat-form-field class="example-full-width">
+      <input [(ngModel)]="product.price" name="price" matInput placeholder="Prix" type="number" step="0.01">
+    </mat-form-field>
+
+    <mat-slide-toggle
+      [checked]="product.isPublished"
+      (change)="changeIsPublished($event)"
+    >Le produit doit-il être publié ?</mat-slide-toggle>
+
+    <mat-form-field class="example-full-width">
+      <input [(ngModel)]="product.imageName" name="imageName" matInput placeholder="Nom de l'image">
+    </mat-form-field>
+
     <button mat-button class="blue-bg">Créer</button>
   </form>
 

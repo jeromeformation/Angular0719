@@ -35,6 +35,8 @@ export class ProductViewShowComponent implements OnInit, DoCheck {
     this.productService.getProductById(id).subscribe(product => {
       // On stocke le produit pour l'affichage
       this.product = product;
+
+      console.log(product);
       // On redirige vers la page 404 si le produit n'a pas été trouvé
       if (!this.product) {
         this.router.navigate(['/not-found']);
