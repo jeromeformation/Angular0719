@@ -12,21 +12,6 @@ export class ProductListComponent implements OnInit {
   private products: Array<Product> = [];
 
   /**
-   * Définition d'une propriété URL
-   */
-  public url: string;
-
-  /**
-   * Définition d'un booléen pour savoir si l'utilisateur est un admin
-   */
-  public isAdmin: boolean;
-
-  /**
-   * Définition des classes CSS à appliquer
-   */
-  public classesCss: object;
-
-  /**
    * Le produit sélectionné
    */
   public choosenProduct: Product;
@@ -40,9 +25,6 @@ export class ProductListComponent implements OnInit {
    * Initialisation des propriétés
    */
   constructor(private productService: ProductService) {
-    this.url = 'https://www.ecosia.org';
-    this.isAdmin = true;
-    this.changeCssClasses();
   }
 
   /**
@@ -63,18 +45,6 @@ export class ProductListComponent implements OnInit {
         // equivalent à : this.averages = this.products.map(() => [0, 0]);
       }
     );
-  }
-
-  private changeCssClasses() {
-    this.classesCss = {
-      'blue-bg': this.isAdmin,
-      'teal-text': !this.isAdmin
-    };
-  }
-
-  public changeAdmin() {
-    this.isAdmin = !this.isAdmin;
-    this.changeCssClasses();
   }
 
   public handleVote(note: number) {

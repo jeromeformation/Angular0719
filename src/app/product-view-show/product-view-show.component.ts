@@ -30,13 +30,11 @@ export class ProductViewShowComponent implements OnInit, DoCheck {
    */
   private getProduct(): void {
     // On récupère l'id de la route
-    const id: number = +this.route.snapshot.paramMap.get('id');
+    const data = this.route.snapshot.paramMap.get('id');
     // On récupère le produit grâce au service
-    this.productService.getProductById(id).subscribe(product => {
+    this.productService.getProductBy(data).subscribe(product => {
       // On stocke le produit pour l'affichage
       this.product = product;
-
-      console.log(product);
       // On redirige vers la page 404 si le produit n'a pas été trouvé
       if (!this.product) {
         this.router.navigate(['/not-found']);
@@ -49,9 +47,10 @@ export class ProductViewShowComponent implements OnInit, DoCheck {
    * auquel cas on recharge le produit correspond à la nouvelle URL
    */
   public ngDoCheck(): void {
-    const id: number = +this.route.snapshot.paramMap.get('id');
+    const data: string|number = this.route.snapshot.paramMap.get('id');
     if (this.product) {
-      if (id !== +this.product.id) {
+      console.log(data);
+      if (+data !== +this.product.id && data !== this.product.slug) {
         this.getProduct();
       }
     }

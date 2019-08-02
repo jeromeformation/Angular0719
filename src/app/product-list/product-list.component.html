@@ -1,24 +1,3 @@
-
-<a [href]="url">Moteur de recherche</a>
-
-<p [attr.contenteditable]="isAdmin">Editez-moi !</p>
-
-<p [class.teal-text]="isAdmin" [class.blue-bg]="isAdmin">Ce texte est en bleu-vert</p>
-
-<p [class]="(isAdmin) ? 'teal-text' : 'blue-bg'" >Ce texte est en bleu-vert</p>
-
-<button mat-button class="blue-bg" (click)="isAdmin = !isAdmin">Switch admin</button>
-<button mat-button class="blue-bg" (click)="changeAdmin()">Switch admin</button>
-
-<p [ngClass]="classesCss">Utilisation de ngClass</p>
-
-<p *ngIf="isAdmin; else publicContent">Contenu confidentiel</p>
-
-<ng-template #publicContent>
-  <p>Contenu public</p>
-</ng-template>
-
-
 <mat-radio-group
   aria-labelledby="example-radio-group-label"
   class="example-radio-group">

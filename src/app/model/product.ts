@@ -25,7 +25,7 @@ export class Product {
   }
 
   public updateSlug() {
-    this.slug = slug(this.name, {lower: true});
+      this.slug = slug(this.name, {lower: true});
   }
 
   get price(): number {

@@ -3,6 +3,7 @@ import { Product } from './model/product';
 import {Observable, of, throwError} from 'rxjs';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
+import {ResponseApi} from './model/response-api';
 
 @Injectable({
   providedIn: 'root'
@@ -40,9 +41,9 @@ export class ProductService {
   /**
    * Récupère l'éventuel produit par rapport à l'id envoyé
    */
-  public getProductById(id: number): Observable<Product|null> {
+  public getProductBy(data: string): Observable<Product|null> {
     return this.http
-      .get<Product>(this.apiURL + '/' + id)
+      .get<Product>(this.apiURL + '/' + data)
       .pipe(
         tap(product => console.log('Produit reçu : ' + product.name)),
         catchError(
@@ -79,12 +80,12 @@ export class ProductService {
   /**
    * Envoi du produit à l'API pour l'insertion en BDD
    */
-  public create(product: Product): Observable<string[]> {
+  public create(product: Product): Observable<ResponseApi> {
 
     // Création du slug
     product.updateSlug();
 
-    return this.http.post<string[]>(this.apiURL, product, this.JSONHeaders).pipe(
+    return this.http.post<ResponseApi>(this.apiURL, product, this.JSONHeaders).pipe(
       tap(datas => console.log('Retour API (creation produit)')),
       tap(datas => console.log(datas))
     );
