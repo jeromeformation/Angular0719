@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import {LayoutModule} from '@angular/cdk/layout';
 import {
   MatButtonModule,
-  MatCardModule,
+  MatCardModule, MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule, MatMenuModule, MatRadioModule,
@@ -23,7 +23,8 @@ import {
     MatRadioModule,
     MatSliderModule,
     MatMenuModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatGridListModule
   ],
   exports: [
     LayoutModule,
@@ -37,7 +38,8 @@ import {
     MatRadioModule,
     MatSliderModule,
     MatMenuModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatGridListModule
   ]
 })
 export class SharedModule { }

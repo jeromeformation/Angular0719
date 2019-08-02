@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+
   /**
    * Définition d'une propriété URL
    */
@@ -20,6 +21,7 @@ export class HomeComponent {
    * Définition des classes CSS à appliquer
    */
   public classesCss: object;
+
   constructor() {
     this.url = 'https://www.ecosia.org';
     this.isAdmin = true;
