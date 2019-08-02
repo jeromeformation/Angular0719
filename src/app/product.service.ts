@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from './model/product';
 import {Observable, of, throwError} from 'rxjs';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -13,6 +13,15 @@ export class ProductService {
    * URL de l'api (le nom du virtualhost)
    */
   private apiURL = 'http://api.partage.local/products';
+
+  /**
+   * Headers pour l'envoi de données
+   */
+  private JSONHeaders = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+    })
+  };
 
   constructor(private http: HttpClient) {}
 
@@ -65,6 +74,20 @@ export class ProductService {
       }
       // Message dans la console
       return throwError(error);
+  }
+
+  /**
+   * Envoi du produit à l'API pour l'insertion en BDD
+   */
+  public create(product: Product): Observable<string[]> {
+
+    // Création du slug
+    product.updateSlug();
+
+    return this.http.post<string[]>(this.apiURL, product, this.JSONHeaders).pipe(
+      tap(datas => console.log('Retour API (creation produit)')),
+      tap(datas => console.log(datas))
+    );
   }
 }
 

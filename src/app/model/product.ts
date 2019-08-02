@@ -3,7 +3,7 @@ import * as slug from 'slug';
 export class Product {
 
   public id: number;
-  private _name: string;
+  public name: string;
   public slug: string;
   public description: string;
   private _price: number;
@@ -23,17 +23,9 @@ export class Product {
     this.isPublished = true;
   }
 
-  public get name() {
-    return this._name;
+  public updateSlug() {
+    this.slug = slug(this.name, {lower: true});
   }
-
-  public set name(value: string) {
-    if (value) {
-      this._name = value;
-      this.slug = slug(this._name, {lower: true});
-    }
-  }
-
 
   get price(): number {
     return this._price;

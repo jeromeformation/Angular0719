@@ -1,6 +1,6 @@
 <section class="container">
   <h1>Création d'un produit</h1>
-  <form class="example-form">
+  <form class="example-form" (ngSubmit)="sendProductToAPI()">
     <mat-form-field>
       <label>
         <input [(ngModel)]="product.name" name="name" matInput placeholder="Nom">
