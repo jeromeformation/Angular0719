@@ -14,21 +14,10 @@ main mat-grid-list {
 main app-product-show {
   flex: 1;
   min-width: 250px;
+  padding: 1rem;
 }
 
 main mat-card {
   margin: 0.75rem;
   width: 100%;
-}
-
-
-
-.example-radio-group {
-  display: flex;
-  flex-direction: column;
-  margin: 15px 0;
-}
-
-.example-radio-button {
-  margin: 5px;
 }

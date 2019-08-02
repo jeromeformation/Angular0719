@@ -4,6 +4,8 @@ import {Observable, of, throwError} from 'rxjs';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import {ResponseApi} from './model/response-api';
+import * as slug from 'slug';
+
 
 @Injectable({
   providedIn: 'root'
@@ -86,6 +88,33 @@ export class ProductService {
     product.updateSlug();
 
     return this.http.post<ResponseApi>(this.apiURL, product, this.JSONHeaders).pipe(
+      tap(datas => console.log('Retour API (creation produit)')),
+      tap(datas => console.log(datas))
+    );
+  }
+
+  /**
+   * Supprime un produit grâce à son id
+   */
+  public delete(id: number): Observable<ResponseApi> {
+    return this.http
+      .delete<ResponseApi>(this.apiURL + '/' + id, this.JSONHeaders)
+      .pipe(
+        tap(datas => console.log('Retour API (suppression produit)')),
+        tap(datas => console.log(datas))
+      )
+      ;
+  }
+
+  /**
+   * Envoi du produit à l'API pour l'insertion en BDD
+   */
+  public update(product: Product): Observable<ResponseApi> {
+
+    // Création du slug
+    product.slug = slug(product.name, {lower: true});
+
+    return this.http.put<ResponseApi>(this.apiURL, product, this.JSONHeaders).pipe(
       tap(datas => console.log('Retour API (creation produit)')),
       tap(datas => console.log(datas))
     );

@@ -1,4 +1,4 @@
-<section class="container">
+<section class="container" *ngIf="product">
   <h1>Création d'un produit</h1>
   <form class="example-form" (ngSubmit)="sendProductToAPI()">
     <mat-form-field>

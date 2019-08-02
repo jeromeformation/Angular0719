@@ -21,7 +21,7 @@
             >Voter</button>
             <button mat-stroked-button color="primary" routerLink="/produits/{{product.id}}">Détail</button>
             <button mat-stroked-button color="accent">Modifier</button>
-            <button mat-stroked-button color="warn">Supprimer</button>
+            <button mat-stroked-button color="warn" (click)="deleteProduct(product)">Supprimer</button>
           </mat-card-actions>
         </mat-card>
       </mat-grid-tile>

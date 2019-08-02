@@ -75,4 +75,19 @@ export class ProductListComponent implements OnInit {
       return 0;
     }
   }
+
+  public deleteProduct(product: Product) {
+    this.productService.delete(product.id).subscribe(
+      datas => {
+        console.log(datas.message);
+
+        //// On supprime le product dans le tableau local
+        // On cherche son index dans le tableau
+        const index = this.products.findIndex(elem => elem.id === product.id);
+        console.log(index);
+        // On supprime l'élément dans le tableau grâce à son index
+        this.products.splice(index, 1);
+      }
+    );
+  }
 }
