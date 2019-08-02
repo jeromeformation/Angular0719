@@ -7,7 +7,7 @@ export class Product {
   public slug: string;
   public description: string;
   private _price: number;
-  public createdAt: Date;
+  public createdAt: string;
   public updatedAt: Date;
   public nbViews: number;
   public isPublished: boolean;
@@ -21,6 +21,7 @@ export class Product {
     // Valeurs par défaut
     this.nbViews = 0;
     this.isPublished = true;
+    this.createdAt = new Date().toISOString().slice(0, 19).replace('T', ' ');
   }
 
   public updateSlug() {
